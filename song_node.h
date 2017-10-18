@@ -75,3 +75,10 @@ struct song_node * order_insert(struct song_node* pter, char nam[256], char art[
   //this is the end
   return insert_place(temp, nam, art, ctr);
 }
+
+struct song_node * find_node( struct song_node *startpt,char artist[256], char nam[256])
+{
+	struct song_node *temp = startpt;
+	
+
+}
