@@ -9,6 +9,19 @@ struct song_node
   struct song_node *next;
 };
 
+void print_list(struct node* startpt)
+{
+	printf("--START--\n");
+	struct node* temp;
+	temp = startpt;
+	printf("%d\n", temp->data);
+	while (temp->next)
+	{
+		temp = temp->next;
+		printf("Name: %s\nArtist:%s\n", temp->name, temp->artist);
+	}
+	printf("---END---\n");
+}
 
 struct song_node * insert_front(struct song_node* pter, char nam[256], char art[256])
 {
