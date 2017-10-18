@@ -2,93 +2,90 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct song_node
+struct song
 {
   char name[256];
   char artist[256];
-  struct song_node *next;
+  struct song *next;
 };
 
-void print_list(struct node* startpt)
+
+//traverse through linked list while next is not null and print artist & name
+void print_list(struct song * startpt)
 {
-	printf("--START--\n");
-	struct node* temp;
-	temp = startpt;
-	printf("%d\n", temp->data);
-	while (temp->next)
+	printf("\n--START--\n");
+	while (startpt)
 	{
-		temp = temp->next;
-		printf("Name: %s\nArtist:%s\n", temp->name, temp->artist);
+	  printf("\nArtist: %s\nName: %s\n", startpt->artist, startpt->name);
+		startpt = startpt->next;
 	}
 	printf("---END---\n");
 }
 
-struct song_node * insert_front(struct song_node* pter, char nam[256], char art[256])
+
+//====================INSERTIONS===========================
+
+//create new node with given name & artist; set new's next to given first node
+struct song * insert_front(struct song* pter, char nam[256], char art[256])
 {
-  struct song_node * newthing = (struct song_node*)calloc(1,sizeof(*pter));
-  strcpy(newthing->artist, art);
-  strcpy(newthing->name, nam);
-  newthing->next = pter;
-  return newthing;
+  struct song * newsong = (struct song*)malloc(sizeof(*pter));
+  strcpy(newsong->artist, art);
+  strcpy(newsong->name, nam);
+  newsong->next = pter;
+  return newsong;
 }
 
-
-//return first node again with updated list
-struct song_node * insert_place(struct song_node* pter, char nam[256], char art[256], int n)
-{
-  struct song_node * temp = pter;
-  if (n == 0) {
-    insert_front(pter, nam, art);
-  }
-  while (n - 1 > 0) {
-    pter = pter->next;
-    n--;
-  }
-  pter->next = insert_front(pter->next, nam, art);
-  return temp;
-  
-}
-
-
-//Order by artist name
 //return the first node in the list
-struct song_node * order_insert(struct song_node* pter, char nam[256], char art[256])
+struct song * order_insert(struct song* pter, char nam[256], char art[256])
 {
-  int ctr = 0;
-  struct song_node * temp = pter;
-  // strcmp - + if first comes later; - if first comes before
-  while (pter) {
-    //if they're the same, ask about the song name
-    if (!strcmp(pter->artist, art)) {
-      if (strcmp(pter->name, nam) < 0) {
-	return insert_place(temp, nam, art, ctr);
+  // a leader and a follower
+  struct song * temp1 = pter;
+  struct song * temp2 = NULL;
+  // STRCMP: - means it goes before, + means it goes after
+  // goal: find the song in list that you know given song must go before
+  while (temp1) {
+    //if they're equal, look at song
+    if (!strcmp(temp1->artist, art)) {
+      if (strcmp(nam, temp1->name) < 0) {
+	break;
       }
+    } //if given song goes before,
+    if (strcmp(art, temp1->artist) < 0) {
+      break;
     }
-    //if this artist in the list goes after, then just insert newhere
-    if (strcmp(pter->artist, art) < 0) {
-      return insert_place(temp, nam, art, ctr);
-    }
-    //housekeeping
-    pter = pter->next;
-    ctr++;
+    //housekeeping, to traverse through list
+    temp2 = temp1;
+    temp1 = temp1->next;
   }
-  //this is the end
-  return insert_place(temp, nam, art, ctr);
+  //temp2 exists -> insert new song before temp1 and as temp2's next
+  //temp2 is null -> we're still at the beginning of list
+  if (temp2) {
+    temp2->next = insert_front(temp1, nam, art);
+    return pter;
+  } else {
+    return insert_front(temp1, nam, art);
+  }
 }
 
-struct song_node * find_node( struct song_node *startpt,char artist[256], char nam[256])
+//====================INSERTIONS===========================
+
+
+
+//====================SEARCH FOR===========================
+
+struct song * find_node( struct song *startpt,char artist[256], char nam[256])
 {
-	struct song_node *temp = startpt;
+	struct song *temp = startpt;
 	
 
 }
 
-struct song_node * free_all(struct song_node * pter)
+struct song * free_all(struct song * pter)
 {
-  struct song_node * temp1 = pter;
+  struct song * temp1 = pter;
   while (pter) {
     temp1 = pter->next;
-    free(temp1);
+    free(pter);
     pter = temp1;
   }
   return pter;
