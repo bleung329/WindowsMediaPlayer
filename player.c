@@ -29,6 +29,49 @@ int main() {
   artist = "american dollar";
   playlist = order_insert(playlist, song, artist);
   print_list(playlist);
+
+  struct song * selected = NULL;
+  song = "daydrea";
+  artist = "beach fossils";
+  printf("\nFinding daydrea by beach fossils:\n");
+  selected = find_node(playlist, song, artist);
+  if (selected) {
+    printf("Artist: %s\nName: %s\n", selected->artist, selected->name);
+  }
+
+  song = "daydream";
+  artist = "beach fossils";
+  printf("\nFinding daydream by beach fossils:\n");
+  selected = find_node(playlist, song, artist);
+  if (selected) {
+    printf("Artist: %s\nName: %s\n", selected->artist, selected->name);
+  }
+
+  song = "anything you synthesize";
+  artist = "american dollar";
+  printf("\nRemoving anything you synthesize by american dollar...\n");
+  playlist = remove_node(playlist, song, artist);
+  print_list(playlist);
+  
+  song = "running with the wolves";
+  artist = "aurora";
+  printf("\nRemoving running with the wolves by aurora...\n");
+  playlist = remove_node(playlist, song, artist);
+  print_list(playlist);
+
+  song = "seven";
+  artist = "catfish and the bottlemen";
+  printf("\nRemoving seven by catfish and the bottlemen...\n");
+  playlist = remove_node(playlist, song, artist);
+  print_list(playlist);
+
+  song = "hallow33n tim3";
+  artist = "kicked off the streets";
+  printf("\nRemoving hallow33n tim3 by kicked off the streets...\n");
+  playlist = remove_node(playlist, song, artist);
+  print_list(playlist);
+
+  
   free_all(playlist);
 
 }

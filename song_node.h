@@ -9,6 +9,7 @@ struct song
   struct song *next;
 };
 
+//====================HELPERS===========================
 
 //traverse through linked list while next is not null and print artist & name
 void print_list(struct song * startpt)
@@ -22,7 +23,6 @@ void print_list(struct song * startpt)
 	printf("---END---\n");
 }
 
-
 //====================INSERTIONS===========================
 
 //create new node with given name & artist; set new's next to given first node
@@ -35,7 +35,7 @@ struct song * insert_front(struct song* pter, char nam[256], char art[256])
   return newsong;
 }
 
-//return the first node in the list
+//inserts node in alphabetically and returns the first node in the list
 struct song * order_insert(struct song* pter, char nam[256], char art[256])
 {
   // a leader and a follower
@@ -67,19 +67,61 @@ struct song * order_insert(struct song* pter, char nam[256], char art[256])
   }
 }
 
-//====================INSERTIONS===========================
-
-
 
 //====================SEARCH FOR===========================
 
-struct song * find_node( struct song *startpt,char artist[256], char nam[256])
+// traverse while not null, return pter if name and artist of pter match given
+struct song * find_node( struct song * pter, char nam[256], char art[256])
 {
-	struct song *temp = startpt;
-	
-
+  while (pter) {
+    if (!strcmp(pter->artist, art) && !strcmp(pter->name, nam)) {
+      return pter;
+    }
+    pter = pter->next;
+  }
+  printf("Not found sorry.\n");
+  return NULL;
 }
 
+
+//====================REMOVALS===========================
+
+// remove a specific node in list
+struct song * remove_node( struct song * pter, char nam[256], char art[256])
+{
+  //follower and leader again
+  struct song * temp1 = pter;
+  struct song * temp2 = NULL;
+  //traverse while not null, compare their artists and names
+  while (temp1) {
+    if (!strcmp(temp1->artist, art) && !strcmp(temp1->name, nam)) {
+      break;
+    }
+    //housekeeping to traverse
+    temp2 = temp1;
+    temp1 = temp1->next;
+  }
+  //both exist; right node exists and it's not first
+  if (temp2 && temp1) {
+    temp2->next = temp1->next;
+    free(temp1);
+  }
+  //temp2 is the last node; right node was not found.
+  else if (temp2) {
+    printf("Not found sorry.\n");
+  }
+  //temp2 is still NULL, you want to remove the first one
+  else {
+    temp2 = temp1->next;
+    free(temp1);
+    return temp2;
+  }
+  return pter;
+}
+
+
+
+// traverse through with a temp pointer to store next before freeing current
 struct song * free_all(struct song * pter)
 {
   struct song * temp1 = pter;
