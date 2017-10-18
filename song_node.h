@@ -82,3 +82,14 @@ struct song_node * find_node( struct song_node *startpt,char artist[256], char n
 	
 
 }
+
+struct song_node * free_all(struct song_node * pter)
+{
+  struct song_node * temp1 = pter;
+  while (pter) {
+    temp1 = pter->next;
+    free(temp1);
+    pter = temp1;
+  }
+  return pter;
+}
