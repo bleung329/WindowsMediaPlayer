@@ -9,21 +9,21 @@ struct song_node
   struct song_node *next;
 };
 
-struct song_node * insert_front(struct song_node* pter, char[256] nam, char[256] art)
+
+struct song_node * insert_front(struct song_node* pter, char nam[256], char art[256])
 {
-  struct song_node * newthing = (struct song_node*)calloc(1,sizeof(song_node));
-  newthing->artist = art;
-  newthing->name = nam;
+  struct song_node * newthing = (struct song_node*)calloc(1,sizeof(*pter));
+  strcpy(newthing->artist, art);
+  strcpy(newthing->name, nam);
   newthing->next = pter;
   return newthing;
 }
 
 
 //return first node again with updated list
-struct song_node * insert_place(struct song_node* pter, char[256] nam, char[256] art, int n)
+struct song_node * insert_place(struct song_node* pter, char nam[256], char art[256], int n)
 {
-  temp = pter;
-  struct n
+  struct song_node * temp = pter;
   if (n == 0) {
     insert_front(pter, nam, art);
   }
@@ -36,21 +36,29 @@ struct song_node * insert_place(struct song_node* pter, char[256] nam, char[256]
   
 }
 
+
 //Order by artist name
 //return the first node in the list
-struct song_node * order_insert(struct song_node* pter, char[256] nam, char[256] art)
+struct song_node * order_insert(struct song_node* pter, char nam[256], char art[256])
 {
-
   int ctr = 0;
-  // strcomp - + if first comes later; - if first comes before
+  struct song_node * temp = pter;
+  // strcmp - + if first comes later; - if first comes before
   while (pter) {
-    if (!strcomp(pter->artist, art)) {
-	    
-    }
-    if (strcomp(pter->artist, art) < 0) {
-	    
-    }
-    pter = pter->next
+    //if they're the same, ask about the song name
+    if (!strcmp(pter->artist, art)) {
+      if (strcmp(pter->name, nam) < 0) {
+	return insert_place(temp, nam, art, ctr);
       }
-  
+    }
+    //if this artist in the list goes after, then just insert newhere
+    if (strcmp(pter->artist, art) < 0) {
+      return insert_place(temp, nam, art, ctr);
+    }
+    //housekeeping
+    pter = pter->next;
+    ctr++;
+  }
+  //this is the end
+  return insert_place(temp, nam, art, ctr);
 }
