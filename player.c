@@ -47,6 +47,13 @@ int main() {
     printf("Artist: %s\nName: %s\n", selected->artist, selected->name);
   }
 
+  artist = "aurora";
+  printf("\nFinding first song by aurora:\n");
+  selected = find_art(playlist, artist);
+  if (selected) {
+    printf("Artist: %s\nName: %s\n", selected->artist, selected->name);
+  }
+
   song = "anything you synthesize";
   artist = "american dollar";
   printf("\nRemoving anything you synthesize by american dollar...\n");

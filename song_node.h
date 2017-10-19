@@ -70,9 +70,21 @@ struct song * order_insert(struct song* pter, char nam[256], char art[256])
 
 //====================SEARCH FOR===========================
 
+struct song * find_art( struct song * pter, char art[256])
+{
+  while (pter) {
+    if (!strcmp(pter->artist, art)) {
+      return pter;
+    }
+    pter = pter->next;
+  }
+  printf("Not found sorry.\n");
+  return NULL;
+}
+  
 // traverse while not null, return pter if name and artist of pter match given
 struct song * find_node( struct song * pter, char nam[256], char art[256])
-{
+{ 
   while (pter) {
     if (!strcmp(pter->artist, art) && !strcmp(pter->name, nam)) {
       return pter;
@@ -118,7 +130,6 @@ struct song * remove_node( struct song * pter, char nam[256], char art[256])
   }
   return pter;
 }
-
 
 
 // traverse through with a temp pointer to store next before freeing current
