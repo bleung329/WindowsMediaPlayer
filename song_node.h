@@ -3,6 +3,17 @@
 #include <string.h>
 #include <time.h>
 
+/*
+    DONE insert nodes at the front
+    DONE insert nodes in order
+    DONE print the entire list
+    DONE find and return a pointer to a node based on artist and song name
+    DONE find and return a pointer to the first song of an artist based on artist name
+    DONE Return a pointer to random element in the list.
+    DONE remove a single specified node from the list
+    DONE free the entire list
+*/
+
 struct song
 {
   char name[256];
