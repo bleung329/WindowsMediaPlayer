@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 struct song
 {
@@ -21,6 +22,18 @@ void print_list(struct song * startpt)
 		startpt = startpt->next;
 	}
 	printf("---END---\n");
+}
+
+int list_count(struct song * startpt)
+{
+	int ctr = 0;
+	struct song *temp = startpt;
+	while (temp->next)
+	{
+		ctr+=1;
+		temp = temp->next;
+	}
+	return ctr;
 }
 
 //====================INSERTIONS===========================
@@ -93,6 +106,19 @@ struct song * find_node( struct song * pter, char nam[256], char art[256])
   }
   printf("Not found sorry.\n");
   return NULL;
+}
+
+//Returns random song from linked list
+struct song * rand_node(struct song * pter)
+{
+	srand(time(NULL));
+	int r = rand() % list_count(pter);
+	struct song *temp = pter;
+	for (r; r>0; r--)
+	{
+		temp = temp->next;
+	}
+	return temp;
 }
 
 

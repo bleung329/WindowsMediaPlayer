@@ -7,7 +7,8 @@ int main() {
 
 
   //  printf("%d\n", strcmp("abbae", "abble"));
-
+  struct song * library[25];
+  
   struct song * playlist = NULL;
   char * song = "running with the wolves";
   char * artist = "aurora";
@@ -29,9 +30,12 @@ int main() {
   artist = "american dollar";
   playlist = order_insert(playlist, song, artist);
   print_list(playlist);
+  printf("%d\n",list_count(playlist));
+  struct song * randsong = rand_node(playlist);
+  printf("%s, %s \n", randsong->artist, randsong->name);
 
   struct song * selected = NULL;
-  song = "daydrea";
+  song = "daydream";
   artist = "beach fossils";
   printf("\nFinding daydrea by beach fossils:\n");
   selected = find_node(playlist, song, artist);
