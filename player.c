@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include "song_node.h"
+#include "song_node.h"
 #include "library.h"
 
 int main() {
 
 
   //  printf("%d\n", strcmp("abbae", "abble"));
-  struct song * library[25];
+  struct song library[25];
   
   struct song * playlist = NULL;
   char * song = "running with the wolves";

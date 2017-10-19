@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "song_node.h"
+
 
 /*
     Add song nodes.
@@ -15,7 +15,7 @@
     Delete all the nodes.
 */
 
-struct song * add_song(struct song olib[26], char[256] nam, char[256] art)
+struct song *add_song(struct song olib[25], char name[256], char art[256])
 {
 	
 }
