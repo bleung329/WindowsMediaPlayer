@@ -15,3 +15,7 @@
     Delete all the nodes.
 */
 
+struct song * add_song(struct song olib[26], char[256] nam, char[256] art)
+{
+	
+}
