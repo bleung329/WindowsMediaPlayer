@@ -27,13 +27,13 @@ struct song
 //traverse through linked list while next is not null and print artist & name
 void print_list(struct song * startpt)
 {
-	printf("\n--START--\n");
+  //	printf("\n--START--\n");
 	while (startpt)
 	{
-	  printf("\nArtist: %s\nName: %s\n", startpt->artist, startpt->name);
+	  printf("Artist: %s\nName: %s\n", startpt->artist, startpt->name);
 		startpt = startpt->next;
 	}
-	printf("---END---\n");
+	//	printf("---END---\n");
 }
 
 int list_count(struct song * startpt)
@@ -181,3 +181,6 @@ struct song * free_all(struct song * pter)
   }
   return pter;
 }
+
+
+

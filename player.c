@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "song_node.h"
-#include "library.h"
+#include "library.c"
 
 int main() {
 
-
+  /*-------------LINKED LIST------------------------
   //  printf("%d\n", strcmp("abbae", "abble"));
   struct song library[25];
   
@@ -84,6 +84,18 @@ int main() {
 
   
   free_all(playlist);
+  -------------------------------------------*/
+
+  char * song = "running with the wolves";;
+  char * artist = "aurora";;
+
+  add_song(song, artist);
+  print_all();
+  remove_all();
+
+
+
 
 }
+
 
