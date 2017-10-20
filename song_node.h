@@ -99,7 +99,7 @@ struct song * find_art( struct song * pter, char art[256])
 {
   while (pter) {
     if (!strcmp(pter->artist, art)) {
-      return pter;
+        return pter;
     }
     pter = pter->next;
   }

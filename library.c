@@ -6,7 +6,7 @@
 /*
     DONE Add song nodes.
     Search for a song given song and artist name (return a pointer).
-    Search for an artist (return a pointer).
+    DONE? Search for an artist (return a pointer).
     DONE Print out all the entries under a certain letter.
     DONE Print out all the songs of a certain artist
     DONE Print out the entire library.
@@ -71,3 +71,20 @@ void add_song(char name[256], char art[256])
   //  print_list(lib[letter]);
 }
 
+//================FIND==================
+
+struct song * find_song(char name[256], char art[256])
+{
+  int letter = art[0]-97;
+  struct song *temp = lib[letter];
+  temp = find_node(temp, name, art);
+  return temp; 
+}
+struct song * find_artist(char art[256])
+{
+  int letter = art[0]-97;
+  struct song *temp = lib[letter];
+  temp = find_art(temp, art);
+  //printf("Found\n");
+  return temp;
+}
