@@ -25,26 +25,26 @@ void print_all()
   while (letter < 26) {
     output = letter + 97;
     if (lib[letter]) {
-      printf("%c list\n", output);
+      printf("\n%c ---\n", output);
       print_list(lib[letter]);
     }
     letter++;
   }
-  printf("\n============================\n");
+  printf("\n=========================\n");
 }
 
 void remove_all()
 {
   int letter;
   for (letter = 0; letter < 26; letter++) {
-    free_all(lib[letter]);
+    lib[letter] = free_all(lib[letter]);
   }
 }
 
 
 void add_song(char name[256], char art[256])
 {
-  int letter = name[0] - 97;
+  int letter = art[0] - 97;
   //  printf("%d\n", letter);
   lib[letter] = order_insert(lib[letter], name, art);
   //  print_list(lib[letter]);

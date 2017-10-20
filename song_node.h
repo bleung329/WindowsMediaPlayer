@@ -30,7 +30,7 @@ void print_list(struct song * startpt)
   //	printf("\n--START--\n");
 	while (startpt)
 	{
-	  printf("Artist: %s\nName: %s\n", startpt->artist, startpt->name);
+	  printf("%s: %s\n", startpt->artist, startpt->name);
 		startpt = startpt->next;
 	}
 	//	printf("---END---\n");

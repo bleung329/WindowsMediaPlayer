@@ -88,11 +88,28 @@ int main() {
 
   char * song = "running with the wolves";;
   char * artist = "aurora";;
-
   add_song(song, artist);
   print_all();
-  remove_all();
 
+  song = "conqueror";
+  artist = "aurora";
+  add_song(song, artist);
+  print_all();
+    
+  song = "seven";
+  artist = "catfish and the bottlemen";
+  add_song(song, artist);
+  print_all();
+
+  song = "down the line";
+  artist = "beach fossils";
+  add_song(song, artist);
+  print_all();
+
+
+  printf("\nemptied...");
+  remove_all();
+  print_all();
 
 
 
