@@ -8,7 +8,7 @@
     Search for a song given song and artist name (return a pointer).
     Search for an artist (return a pointer).
     DONE Print out all the entries under a certain letter.
-    Print out all the songs of a certain artist
+    DONE Print out all the songs of a certain artist
     DONE Print out the entire library.
     Shuffle - print out a series of randomly chosen songs.
     Delete a song
@@ -48,6 +48,11 @@ void print_letter(char letre)
 }
 
 //====================REMOVALS===========================
+
+void remove_song(char name[256], char art[256])
+{
+	
+}
 
 void remove_all()
 {
