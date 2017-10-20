@@ -120,8 +120,6 @@ int main() {
   printf("\nall artists of b?\n");
   print_letter('b');
 
-  find_artist("aurora");
-
   printf("\nemptied.");
   remove_all();
   print_all();
