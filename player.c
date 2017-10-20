@@ -119,7 +119,8 @@ int main() {
 
   printf("\nall artists of b?\n");
   print_letter('b');
-
+  remove_song("kong","bonobo");
+  print_letter('b');
   printf("\nemptied.");
   remove_all();
   print_all();

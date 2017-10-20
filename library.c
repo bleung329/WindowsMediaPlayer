@@ -11,7 +11,7 @@
     DONE Print out all the songs of a certain artist
     DONE Print out the entire library.
     Shuffle - print out a series of randomly chosen songs.
-    Delete a song
+    DONE Delete a song
     DONE Delete all the nodes.
 */
 
@@ -51,13 +51,12 @@ void print_letter(char letre)
 
 void remove_song(char name[256], char art[256])
 {
-	
+	lib[art[0]-97] = remove_node(lib[art[0]-97], name, art);
 }
 
 void remove_all()
 {
-  int letter;
-  for (letter = 0; letter < 26; letter++) {
+  for (int letter = 0; letter < 26; letter++) {
     lib[letter] = free_all(lib[letter]);
   }
 }
@@ -86,4 +85,27 @@ struct song * find_artist(char art[256])
   struct song *temp = lib[letter];
   temp = find_art(temp, art);
   return temp;
+}
+//===============SHUFFLE================
+//Shuffle - print out a series of randomly chosen songs.
+
+struct song * shuffle(int len)
+{
+	srand(time(NULL));
+	struct song *temp;
+	int r, ra;
+	while (len)
+	{	
+		ra = rand() % 26;
+		if (lib[ra])
+		{
+			temp->next = rand_node(lib[ra]);
+		}
+		else
+		{
+			continue;
+		}
+		len--;
+	}
+	return temp;
 }

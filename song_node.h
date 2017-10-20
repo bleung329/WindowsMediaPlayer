@@ -48,6 +48,7 @@ int list_count(struct song * startpt)
 	return ctr;
 }
 
+
 //====================INSERTIONS===========================
 
 //create new node with given name & artist; set new's next to given first node
