@@ -8,7 +8,7 @@
     DONE Search for a song given song and artist name (return a pointer).
     DONE Search for an artist (return a pointer).
     DONE Print out all the entries under a certain letter.
-    DONE Print out all the songs of a certain artist
+    Print out all the songs of a certain artist
     DONE Print out the entire library.
     Shuffle - print out a series of randomly chosen songs.
     DONE Delete a song
@@ -18,7 +18,7 @@
 
 //LE LIBRARY OFICIAL
 struct song * lib[26];
-int size;
+int size = 0;
 
 
 //=====================PRINTING=========================
@@ -89,17 +89,24 @@ struct song * find_artist(char art[256])
 //===============SHUFFLE================
 //Shuffle - print out a series of randomly chosen songs.
 
+
 struct song * shuffle(int len)
 {
 	srand(time(NULL));
 	struct song *temp;
-	int r, ra;
+	int r, ra, total_songs;
+	for (int i=25;i>=0;i--)
+	{
+		total_songs+=list_count(lib[i]);
+	}
+  struct song *temp = ()
 	while (len)
 	{	
-		ra = rand() % 26;
-		if (lib[ra])
+		ra = rand() % total_songs;
+		for (ra; ra>0; ra)
 		{
 			temp->next = rand_node(lib[ra]);
+
 		}
 		else
 		{

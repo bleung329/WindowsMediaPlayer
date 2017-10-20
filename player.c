@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "song_node.h"
-#include "library.c"
+#include "library.h"
 
 int main() {
 

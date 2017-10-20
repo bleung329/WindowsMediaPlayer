@@ -37,7 +37,7 @@ void print_list(struct song * startpt)
 
 /* traverse through list until you find a song by an artist. start new while
    loop and while it's not null and the artists are equal, print*/
-void print_artist(struct song * startpt, char[256] art)
+void print_artist(struct song * startpt, char art[256])
 {
   while (startpt) {
     if (!strcmp(startpt->artist, art)) {
