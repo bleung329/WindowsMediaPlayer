@@ -28,14 +28,30 @@ struct song
 void print_list(struct song * startpt)
 {
   //	printf("\n--START--\n");
-	while (startpt)
-	{
-	  printf("%s: %s\n", startpt->artist, startpt->name);
-		startpt = startpt->next;
-	}
-	//	printf("---END---\n");
+  while (startpt) {
+    printf("%s: %s\n", startpt->artist, startpt->name);
+    startpt = startpt->next;
+  }
+  //	printf("---END---\n");
 }
 
+/* traverse through list until you find a song by an artist. start new while
+   loop and while it's not null and the artists are equal, print*/
+void print_artist(struct song * startpt, char[256] art)
+{
+  while (startpt) {
+    if (!strcmp(startpt->artist, art)) {
+      break;
+    }
+    startpt = startpt->next;
+  }
+  while (startpt && !strcmp(startpt->artist, art)) {
+    printf("%s: %s\n", startpt->artist, startpt->name);
+    startpt = startpt->next;
+  }
+}
+
+//counts how many songs are in list
 int list_count(struct song * startpt)
 {
 	int ctr = 0;
@@ -96,6 +112,7 @@ struct song * order_insert(struct song* pter, char nam[256], char art[256])
 
 //====================SEARCH FOR===========================
 
+//traverse while not null, return pter if artist of pter match given
 struct song * find_art( struct song * pter, char art[256])
 {
   while (pter) {
