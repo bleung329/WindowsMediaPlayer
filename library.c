@@ -4,18 +4,24 @@
 
 
 /*
-    Add song nodes.
+    DONE Add song nodes.
     Search for a song given song and artist name (return a pointer).
     Search for an artist (return a pointer).
-    Print out all the entries under a certain letter.
+    DONE Print out all the entries under a certain letter.
     Print out all the songs of a certain artist
-    Print out the entire library.
+    DONE Print out the entire library.
     Shuffle - print out a series of randomly chosen songs.
     Delete a song
-    Delete all the nodes.
+    DONE Delete all the nodes.
 */
 
+
+//LE LIBRARY OFICIAL
 struct song * lib[26];
+int size;
+
+
+//=====================PRINTING=========================
 
 void print_all()
 {
@@ -25,13 +31,23 @@ void print_all()
   while (letter < 26) {
     output = letter + 97;
     if (lib[letter]) {
-      printf("\n%c ---\n", output);
+      printf("\n%c---\n", output);
       print_list(lib[letter]);
     }
     letter++;
   }
   printf("\n=========================\n");
 }
+
+void print_letter(char letre)
+{
+  printf("\n%c list ------- \n", letre);
+  int index = letre - 97;
+  print_list(lib[index]);
+  printf("-------------- \n");
+}
+
+//====================REMOVALS===========================
 
 void remove_all()
 {

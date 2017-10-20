@@ -126,7 +126,7 @@ struct song * rand_node(struct song * pter)
 	srand(time(NULL));
 	int r = rand() % list_count(pter);
 	struct song *temp = pter;
-	for (r; r>0; r--)
+	for (r; r; r--)
 	{
 		temp = temp->next;
 	}
