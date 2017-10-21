@@ -72,7 +72,7 @@ int main() {
   remove_song("kong","bonobo");
   print_all();
   
-  printf("\nemptied.");
+  printf("\ntesting remove_all.....");
   remove_all();
   print_all();
 
