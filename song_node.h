@@ -55,20 +55,13 @@ void print_artist(struct song * startpt, char art[256])
 int list_count(struct song * startpt)
 {
 	int ctr = 0;
-	if (!startpt)
-	{
-		return 0;
-	}
-	struct song *temp = startpt;
-	while (temp->next)
+	while (startpt)
 	{
 		ctr+=1;
-		temp = temp->next;
+		startpt = startpt->next;
 	}
 	return ctr;
 }
-
-//Thanks to StackOverflow
 
 
 //====================INSERTIONS===========================
