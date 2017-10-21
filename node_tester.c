@@ -9,7 +9,9 @@ int main() {
 
   printf("\nTESTING LINKED LIST FUNCTIONS\n");
   printf("========================================\n");
-  
+
+
+  //inserting
   char * song = "running with the wolves";
   char * artist = "aurora";
   playlist = order_insert(playlist, song, artist);
@@ -30,65 +32,101 @@ int main() {
   artist = "american dollar";
   playlist = order_insert(playlist, song, artist);
 
-  printf("\nprinting playlist...\n");
+  printf("\n.....\n");
+  printf("testing print_list\n\n");
   print_list(playlist);
-  
-  printf("\nprinting size of playlist...\n");
+
+
+  //printing full list
+  printf("\n.....\n");
+  printf("testing list_count\n\n");
   printf("%d\n",list_count(playlist));
 
-  printf("\na randomly selected song...\n");
-  struct song * randsong = rand_node(playlist);
-  printf("%s, %s \n", randsong->artist, randsong->name);
 
+  //printing one node
+  song = "seven";
+  artist = "catfish and the bottlemen";
+  printf("\n.....\n");
+  printf("testing print_node\n\n");
+  print_node(playlist, artist, song);
+
+  print_list(playlist);
+  
+  //testing random nodes
+  printf("\n.....\n");
+  printf("testing rand_node\n\n");
+  struct song * randsong = rand_node(playlist);
+  printf("%s: %s \n", randsong->artist, randsong->name);
+  randsong = rand_node(playlist);
+  printf("%s: %s \n", randsong->artist, randsong->name);
+  randsong = rand_node(playlist);
+  printf("%s: %s \n", randsong->artist, randsong->name);
+
+  
+  //finding nodes by song & artist
   struct song * selected = NULL;
   song = "daydrea";
   artist = "beach fossils";
-  printf("\nFinding daydrea by beach fossils:\n");
+  printf("\n.....\n");
+  printf("testing find_node: daydrea by beach fossils\n\n");
   selected = find_node(playlist, song, artist);
   if (selected) {
-    printf("Artist: %s\nName: %s\n", selected->artist, selected->name);
+    printf("%s: %s\n", selected->artist, selected->name);
   }
 
   song = "daydream";
   artist = "beach fossils";
-  printf("\nFinding daydream by beach fossils:\n");
+  printf("\n.....\n");
+  printf("testing find_node: daydream by beach fossils\n\n");
   selected = find_node(playlist, song, artist);
   if (selected) {
-    printf("Artist: %s\nName: %s\n", selected->artist, selected->name);
+    printf("%s: %s\n", selected->artist, selected->name);
   }
 
+
+  //finding artist's first node
   artist = "aurora";
-  printf("\nFinding aurora's first song:\n");
+  printf("\n.....\n");
+  printf("testing find_art: aurora\n\n");
   selected = find_art(playlist, artist);
   if (selected) {
-    printf("Artist: %s\nName: %s\n", selected->artist, selected->name);
+    printf("%s: %s\n", selected->artist, selected->name);
   }
 
+
+  //removals
   song = "anything you synthesize";
   artist = "american dollar";
-  printf("\nRemoving anything you synthesize by american dollar...\n");
+  printf("\n.....\n");
+  printf("testing remove_node: anything you synthesize by american dollar\n\n");
   playlist = remove_node(playlist, song, artist);
   print_list(playlist);
   
   song = "running with the wolves";
   artist = "aurora";
-  printf("\nRemoving running with the wolves by aurora...\n");
+  printf("\n.....\n");
+  printf("testing remove_node: running with the wolves by aurora\n\n");
   playlist = remove_node(playlist, song, artist);
   print_list(playlist);
 
   song = "seven";
   artist = "catfish and the bottlemen";
-  printf("\nRemoving seven by catfish and the bottlemen...\n");
+  printf("\n.....\n");
+  printf("testing remove_node: seven by catfish and the bottlemen\n\n");
   playlist = remove_node(playlist, song, artist);
   print_list(playlist);
 
   song = "hallow33n tim3";
   artist = "kicked off the streets";
-  printf("\nRemoving hallow33n tim3 by kicked off the streets...\n");
+  printf("\n.....\n");
+  printf("testing remove_node: hallow33n tim3 by kicked off the streets\n\n");
   playlist = remove_node(playlist, song, artist);
   print_list(playlist);
 
-  printf("\nremoving all songs...\n");
+
+  //freeing all
+  printf("\n.....\n");
+  printf("testing free_all\n\n");
   playlist = free_all(playlist);
   print_list(playlist);
 
