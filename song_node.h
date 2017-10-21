@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
+#include <assert.h>
 
 /*
     DONE insert nodes at the front
@@ -55,6 +55,10 @@ void print_artist(struct song * startpt, char art[256])
 int list_count(struct song * startpt)
 {
 	int ctr = 0;
+	if (!startpt)
+	{
+		return 0;
+	}
 	struct song *temp = startpt;
 	while (temp->next)
 	{
@@ -63,6 +67,8 @@ int list_count(struct song * startpt)
 	}
 	return ctr;
 }
+
+//Thanks to StackOverflow
 
 
 //====================INSERTIONS===========================
@@ -141,8 +147,13 @@ struct song * find_node( struct song * pter, char nam[256], char art[256])
 //Returns random song from linked list
 struct song * rand_node(struct song * pter)
 {
-	srand(time(NULL));
-	int r = rand() % list_count(pter);
+	//srand(time(NULL));
+	int list_len = list_count(pter);
+	if (list_len<=1)
+	{
+		return pter;
+	}
+	int r = rand() % list_len;
 	struct song *temp = pter;
 	for (r; r; r--)
 	{

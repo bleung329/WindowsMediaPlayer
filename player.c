@@ -32,6 +32,8 @@ int main() {
   add_song(song, artist);
   
   print_all();
+
+  shuffle(3);
   
   printf("\nall artists of a?\n");
   print_letter('a');

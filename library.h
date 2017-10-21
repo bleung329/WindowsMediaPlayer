@@ -18,7 +18,7 @@
 
 //LE LIBRARY OFICIAL
 struct song * lib[26];
-int size = 0;
+//int size = 0;
 
 
 //=====================PRINTING=========================
@@ -89,30 +89,36 @@ struct song * find_artist(char art[256])
 //===============SHUFFLE================
 //Shuffle - print out a series of randomly chosen songs.
 
-
-struct song * shuffle(int len)
+void shuffle(int len)
 {
+  printf("Random playlist of length: %d\n",len);
 	srand(time(NULL));
-	struct song *temp;
-	int r, ra, total_songs;
+	int total_songs,r;
+  struct song *playpart;
 	for (int i=25;i>=0;i--)
 	{
 		total_songs+=list_count(lib[i]);
 	}
-  struct song *temp = ()
-	while (len)
-	{	
-		ra = rand() % total_songs;
-		for (ra; ra>0; ra)
-		{
-			temp->next = rand_node(lib[ra]);
-
-		}
-		else
-		{
-			continue;
-		}
-		len--;
-	}
-	return temp;
+  if (len > total_songs)
+  {
+    return NULL;
+  }
+  else
+  {
+    while (len)
+    {
+      r = rand() % 26;
+      //printf("%d\n",r);
+      if (!lib[r])
+      {
+        continue;
+      }
+      else
+      {
+        playpart = rand_node(lib[r]);
+        printf("Song: %s, Artist: %s\n", playpart->name, playpart->artist);
+      }
+      len--;
+    }
+  }
 }
