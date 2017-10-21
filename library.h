@@ -23,6 +23,7 @@ struct song * lib[26];
 
 //=====================PRINTING=========================
 
+//traverse through all the indices, calling print_list
 void print_all()
 {
   printf("\n======MUSIC LIBRARY======: \n");
@@ -39,6 +40,7 @@ void print_all()
   printf("\n=========================\n");
 }
 
+//go straight to corresponding index, call printlist
 void print_letter(char letre)
 {
   printf("\n%c list ------- \n", letre);
@@ -47,13 +49,18 @@ void print_letter(char letre)
   printf("-------------- \n");
 }
 
-//====================REMOVALS===========================
 
+
+//====================REMOVALS & ADDS=======================
+
+
+//go straight to proper index, call remove
 void remove_song(char name[256], char art[256])
 {
 	lib[art[0]-97] = remove_node(lib[art[0]-97], name, art);
 }
 
+//move through each index, calling free_all
 void remove_all()
 {
   for (int letter = 0; letter < 26; letter++) {
@@ -61,7 +68,7 @@ void remove_all()
   }
 }
 
-
+//go straight to proper index, call order_insert
 void add_song(char name[256], char art[256])
 {
   int letter = art[0] - 97;
@@ -70,8 +77,10 @@ void add_song(char name[256], char art[256])
   //  print_list(lib[letter]);
 }
 
-//================FIND==================
+//======================FIND==============================
 
+
+//go straight to proper index, return pointer from find_node
 struct song * find_song(char name[256], char art[256])
 {
   int letter = art[0]-97;
@@ -79,6 +88,8 @@ struct song * find_song(char name[256], char art[256])
   temp = find_node(temp, name, art);
   return temp;
 }
+
+//go straight to proper index, return pointer from find_art
 struct song * find_artist(char art[256])
 {
   int letter = art[0]-97;
@@ -87,12 +98,12 @@ struct song * find_artist(char art[256])
   return temp;
 }
 
-//===============SHUFFLE================
+//=================================SHUFFLE================
 //Shuffle - print out a series of randomly chosen songs.
 
 void shuffle(int len)
 {
-  printf("Random playlist of length: %d\n",len);
+  printf("\nRandom playlist of length: %d\n",len);
   srand(time(NULL));
   //find total number of songs
   int total_songs = 0;

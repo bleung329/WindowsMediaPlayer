@@ -8,7 +8,7 @@ int main() {
   struct song * playlist = NULL;
 
   printf("\nTESTING LINKED LIST FUNCTIONS\n");
-  printf("========================================\n");
+  printf("=========================================================\n");
 
 
   //inserting

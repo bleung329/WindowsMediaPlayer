@@ -5,8 +5,12 @@
 
 int main() {
 
-  printf("\nAdding:\nrunning with the wolves by aurora\nconqueror by aurora\nseven by catfish and the bottlemen\ndown the line by beach fossils\nwoods by black marble\nkong by bonobo\n");
+  // printf("\nAdding:\nrunning with the wolves by aurora\nconqueror by aurora\nseven by catfish and the bottlemen\ndown the line by beach fossils\nwoods by black marble\nkong by bonobo\n");
 
+  printf("\nTESTING ARRAY OF LINKED LISTS FUNCTIONS\n");
+  printf("=========================================================\n");
+
+  
   char * song = "running with the wolves";
   char * artist = "aurora";
   add_song(song, artist);
@@ -30,9 +34,11 @@ int main() {
   song = "kong";
   artist = "bonobo";
   add_song(song, artist);
-  
+
+  printf("\ntesting print_all.....");
   print_all();
 
+  printf("\ntesting shuffled playlist.....\n");
   shuffle(3);
   
   printf("\nall artists of a?\n");
@@ -40,8 +46,11 @@ int main() {
 
   printf("\nall artists of b?\n");
   print_letter('b');
+
+  printf("\ntesting remove_song: kong by bonobo.....");
   remove_song("kong","bonobo");
-  print_letter('b');
+  print_all();
+  
   printf("\nemptied.");
   remove_all();
   print_all();
