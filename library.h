@@ -49,7 +49,13 @@ void print_letter(char letre)
   printf("-------------- \n");
 }
 
-
+void print_art(char art[256])
+{
+  printf("\n%s list ------- \n", art);
+  int index = art[0] - 97;
+  print_artist(lib[index], art);
+  printf("-------------- \n");
+}
 
 //====================REMOVALS & ADDS=======================
 

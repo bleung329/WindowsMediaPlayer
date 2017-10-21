@@ -38,14 +38,35 @@ int main() {
   printf("\ntesting print_all.....");
   print_all();
 
-  printf("\ntesting shuffled playlist.....\n");
-  shuffle(3);
-  
   printf("\nall artists of a?\n");
   print_letter('a');
 
   printf("\nall artists of b?\n");
   print_letter('b');
+
+  printf("\nall songs of aurora?\n");
+  artist = "aurora";
+  print_art(artist);
+  
+  printf("\ntesting shuffled playlist.....\n");
+  shuffle(3);
+  
+  struct song * selected;
+  printf("\ntesting find_song: woods by black marble......\n");
+  song = "kong";
+  artist = "bonobo";
+  selected = find_song(song, artist);
+  if (selected) {
+    printf("%s: %s\n", selected->artist, selected->name);
+  }
+  
+  printf("\ntesting find_song: conquero by aurora......\n");
+  song = "conquero";
+  artist = "aurora";
+  selected = find_song(song, artist);
+  if (selected) {
+    printf("%s: %s\n", selected->artist, selected->name);
+  }
 
   printf("\ntesting remove_song: kong by bonobo.....");
   remove_song("kong","bonobo");
