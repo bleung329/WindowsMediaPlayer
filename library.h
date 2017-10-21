@@ -86,39 +86,51 @@ struct song * find_artist(char art[256])
   temp = find_art(temp, art);
   return temp;
 }
+
 //===============SHUFFLE================
 //Shuffle - print out a series of randomly chosen songs.
 
 void shuffle(int len)
 {
   printf("Random playlist of length: %d\n",len);
-	srand(time(NULL));
-	int total_songs,r;
-  struct song *playpart;
-	for (int i=25;i>=0;i--)
-	{
-		total_songs+=list_count(lib[i]);
-	}
-  if (len > total_songs)
-  {
-    return NULL;
+  srand(time(NULL));
+  //find total number of songs
+  int total_songs = 0;
+  for (int i=25;i>=0;i--) {
+    total_songs+=list_count(lib[i]);
   }
-  else
-  {
-    while (len)
-    {
-      r = rand() % 26;
-      //printf("%d\n",r);
-      if (!lib[r])
-      {
-        continue;
+
+  struct song *playpart;
+  int r;
+
+  //for length of playlist
+  while (len--) {
+    //random nth song
+    r = rand() % total_songs;
+    int index = 0;
+    playpart = lib[index]; //start at first
+    //traverse to rth number
+    while (r) {
+      //if playpart is not null
+      if (playpart) {
+	//go to next
+	playpart = playpart->next;
+	r--; //count it
+      } else {
+	playpart = lib[++index]; //don't count it, move to next letter
       }
-      else
-      {
-        playpart = rand_node(lib[r]);
-        printf("Song: %s, Artist: %s\n", playpart->name, playpart->artist);
+    }
+    //you ended the loop, perhaps on a NULL, if not, print.
+    if (playpart) {
+      printf("%s: %s\n", playpart->artist, playpart->name);
+    } else {
+      //if so, move to the next available song
+      while (!playpart) {
+	playpart = lib[++index];
       }
-      len--;
+      printf("%s: %s\n", playpart->artist, playpart->name);
     }
   }
+
+  
 }

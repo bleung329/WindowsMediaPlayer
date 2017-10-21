@@ -7,8 +7,8 @@ int main() {
 
   printf("\nAdding:\nrunning with the wolves by aurora\nconqueror by aurora\nseven by catfish and the bottlemen\ndown the line by beach fossils\nwoods by black marble\nkong by bonobo\n");
 
-  char * song = "running with the wolves";;
-  char * artist = "aurora";;
+  char * song = "running with the wolves";
+  char * artist = "aurora";
   add_song(song, artist);
 
   song = "conqueror";
